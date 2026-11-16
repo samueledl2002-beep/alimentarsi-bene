@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Alimentarsi bene 🔥</title>
+<meta name="theme-color" content="#e0356f">
+<meta name="description" content="Piano di alimentazione e idratazione per le uscite in bici, con tabella di marcia e percorso GPX/FIT.">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Alimentarsi bene">
+<style>
+@font-face{font-family:Barlow;font-style:normal;font-weight:400;font-display:swap;src:url(fonts/barlow-latin-400-normal.woff2) format("woff2")}
+@font-face{font-family:Barlow;font-style:normal;font-weight:500;font-display:swap;src:url(fonts/barlow-latin-500-normal.woff2) format("woff2")}
+@font-face{font-family:Barlow;font-style:normal;font-weight:600;font-display:swap;src:url(fonts/barlow-latin-600-normal.woff2) format("woff2")}
+@font-face{font-family:"Barlow Condensed";font-style:normal;font-weight:600;font-display:swap;src:url(fonts/barlow-condensed-latin-600-normal.woff2) format("woff2")}
+@font-face{font-family:"Barlow Condensed";font-style:normal;font-weight:700;font-display:swap;src:url(fonts/barlow-condensed-latin-700-normal.woff2) format("woff2")}
+:root{--bg:#f6f3f0;--card:#fff;--ink:#1c2430;--mute:#6a7681;--line:#e9e3de;--soft:#f3eeea;--pink:#e0356f;--pink2:#ff7aa6;--pinkbg:#fde8ef;--teal:#0e8a7a;--tealbg:#e0f3f0;--shadow:0 1px 2px rgba(28,36,48,.05),0 14px 30px -16px rgba(28,36,48,.25);
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e141a;--card:#161f27;--ink:#eef2f5;--mute:#93a3af;--line:#25323d;--soft:#1c2832;--pink:#ff6b9d;--pink2:#ff9ec0;--pinkbg:#3a1a2a;--teal:#56d8c3;--tealbg:#143a35;--shadow:0 1px 2px rgba(0,0,0,.4),0 14px 30px -16px rgba(0,0,0,.7)}}
+:root[data-theme="dark"]{--bg:#0e141a;--card:#161f27;--ink:#eef2f5;--mute:#93a3af;--line:#25323d;--soft:#1c2832;--pink:#ff6b9d;--pink2:#ff9ec0;--pinkbg:#3a1a2a;--teal:#56d8c3;--tealbg:#143a35;--shadow:0 1px 2px rgba(0,0,0,.4),0 14px 30px -16px rgba(0,0,0,.7)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Barlow,system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-text-size-adjust:100%}
+main{max-width:640px;margin:0 auto;padding:12px 16px 48px}
+.hero{padding:18px 2px 6px}
+.kick{font:600 12px/1 Barlow,system-ui,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--pink)}
+h1{font:700 48px/.95 "Barlow Condensed","Arial Narrow",sans-serif;margin:12px 0 8px;letter-spacing:-.01em}
+.sub{color:var(--mute);margin:0;max-width:36ch}
+.hero svg{display:block;width:100%;height:60px;margin-top:14px}
+section{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px;margin-bottom:16px;box-shadow:var(--shadow)}
+.sk{font:600 12px/1 Barlow,system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin-bottom:14px}
+h2{font:700 24px/1.1 "Barlow Condensed","Arial Narrow",sans-serif;margin:0 0 10px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+label{display:block;font-size:13px;font-weight:500;color:var(--mute)}
+input,select{width:100%;margin-top:5px;padding:12px;font:inherit;font-size:17px;color:var(--ink);background:var(--soft);border:1px solid transparent;border-radius:12px;-webkit-appearance:none;appearance:none}
+select{background-image:linear-gradient(45deg,transparent 50%,var(--mute) 50%),linear-gradient(135deg,var(--mute) 50%,transparent 50%);background-position:calc(100% - 20px) 55%,calc(100% - 14px) 55%;background-size:6px 6px;background-repeat:no-repeat;padding-right:34px}
+input:focus,select:focus{outline:none;border-color:var(--pink);box-shadow:0 0 0 3px var(--pinkbg)}
+input[type=file]{padding:10px;font-size:15px}
+.seg{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;background:var(--soft);padding:4px;border-radius:14px;margin-top:5px}
+.seg button{border:0;background:transparent;padding:11px 4px;border-radius:10px;font:600 15px Barlow,system-ui,sans-serif;color:var(--mute);cursor:pointer;transition:background .15s,color .15s}
+.seg button.on{background:var(--card);color:var(--pink);box-shadow:0 1px 3px rgba(0,0,0,.14)}
+.seg button small{display:block;margin-top:2px;font:500 12px/1.2 Barlow,system-ui,sans-serif;color:var(--mute)}
+.seg button.on small{color:var(--pink)}
+.hint{font-size:13px;color:var(--mute);margin:6px 2px 0}
+.span2{grid-column:1/-1}
+.big{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 12px}
+.big div{flex:1 1 110px;background:var(--soft);border-radius:16px;padding:12px 14px}
+.big div:first-child{background:linear-gradient(135deg,var(--pink),var(--pink2))}
+.big b{display:block;font:700 32px/1 "Barlow Condensed","Arial Narrow",sans-serif;color:var(--pink)}
+.big div:first-child b,.big div:first-child span{color:#fff}
+.big span{display:block;margin-top:4px;font-size:13px;color:var(--mute)}
+ol{list-style:none;margin:6px 0 0 6px;padding:0;border-left:2px solid var(--line)}
+ol li{position:relative;display:grid;grid-template-columns:64px 1fr;gap:12px;padding:12px 0 12px 20px}
+ol li::before{content:"";position:absolute;left:-8px;top:19px;width:14px;height:14px;border-radius:50%;background:var(--teal);border:3px solid var(--card)}
+ol li.f::before{background:var(--pink)}
+.km{font:700 28px/1 "Barlow Condensed","Arial Narrow",sans-serif;color:var(--ink)}
+.km small{display:block;margin-top:3px;font:500 13px/1.2 Barlow,system-ui,sans-serif;color:var(--mute)}
+.chip{display:inline-block;padding:5px 12px;border-radius:999px;font-size:14px;margin:2px 6px 2px 0}
+.chip.d{background:var(--tealbg);color:var(--teal)}
+.chip.f{background:var(--pinkbg);color:var(--pink);font-weight:600}
+.nt{font-size:13px;color:var(--mute);margin-top:2px}
+p.n{margin:10px 0 0;font-size:15px}
+.fine{font-size:13px;color:var(--mute)}
+a{color:var(--teal)}
+.src{margin:6px 0 0;padding-left:18px}
+.src li{font-size:14px;padding:2px 0}
+.btn{padding:11px 16px;font:600 15px Barlow,system-ui,sans-serif;color:var(--ink);background:var(--soft);border:1px solid var(--line);border-radius:12px;cursor:pointer;margin:8px 8px 0 0}
+.btn.pri{background:var(--pink);border-color:var(--pink);color:#fff}
+details{border-top:1px solid var(--line);padding:10px 0}
+details:first-of-type{border-top:0}
+summary{font-weight:600;font-size:17px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--pink);font-size:22px;line-height:1}
+details[open] summary::after{content:"−"}
+details ul{margin:8px 0 4px;padding-left:18px}
+details li{padding:3px 0;font-size:15px}
+.tag{color:var(--mute);font-size:13px}
+#out h2{margin-top:2px}
+</style>
+</head>
+<body>
+<main>
+<header class="hero">
+<div class="kick">Piano per le tue uscite</div>
+<h1>Alimentarsi bene 🔥</h1>
+<p class="sub">Inserisci i dati dell’uscita e ottieni cosa mangiare e bere, e quando.</p>
+<p class="fine" style="margin:10px 0 0;max-width:42ch">Linee guida generali per adulti sani: non sostituiscono il parere di un medico o di un nutrizionista.</p>
+<svg viewBox="0 0 320 60" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="hg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--pink);stop-opacity:.28"/><stop offset="1" style="stop-color:var(--pink);stop-opacity:0"/></linearGradient></defs><path d="M0 50 C28 48 40 30 70 33 S112 8 142 15 S186 46 216 42 S266 12 292 21 S312 34 320 30 L320 60 L0 60Z" fill="url(#hg)"/><path d="M0 50 C28 48 40 30 70 33 S112 8 142 15 S186 46 216 42 S266 12 292 21 S312 34 320 30" fill="none" stroke="var(--pink)" stroke-width="2.5" stroke-linecap="round"/></svg>
+</header>
+
+<section>
+<div class="sk">1 · Il giro</div>
+<div class="grid">
+<label>Distanza (km)<input id="km" type="number" inputmode="decimal" min="1" value="80"></label>
+<label>Dislivello (m)<input id="d" type="number" inputmode="numeric" min="0" value="900"></label>
+<label>Temperatura (°C)<input id="t" type="number" inputmode="decimal" value="20"></label>
+<label>Il tuo peso (kg)<input id="w" type="number" inputmode="decimal" min="30" value="70"></label>
+<div class="span2"><label>Intensità</label>
+<select id="i" hidden><option value="0">Facile</option><option value="1" selected>Media</option><option value="2">Dura</option></select>
+<div class="seg" id="seg"><button type="button" data-v="0">Facile</button><button type="button" data-v="1">Media</button><button type="button" data-v="2">Dura</button></div>
+<div class="hint" id="ih"></div></div>
+<label class="span2">Durata, se la sai<input id="h" type="text" inputmode="decimal" autocomplete="off" placeholder="es. 2:30:00 oppure 230 (facoltativa)"></label>
+<div class="hint span2" id="hf" style="margin:-6px 2px 0"></div>
+<label class="span2" id="tmw" hidden>Tempi del percorso<select id="tm"><option value="f" selected>Quelli del file (la tua andatura reale)</option><option value="m">Stimati dall’intensità</option></select></label>
+</div>
+</section>
+
+<section>
+<div class="sk">2 · Percorso (facoltativo)</div>
+<label>Carica un file GPX o FIT (da Komoot, Strava, Garmin, CooSpo...)<input id="gpx" type="file"></label>
+<div id="rt" style="margin-top:14px"></div>
+</section>
+
+<section>
+<div class="sk">3 · Borracce e cibo</div>
+<div class="grid">
+<label>Carbo in borraccia 1 (g)<input id="b" type="number" inputmode="numeric" min="0" value="60"></label>
+<label>Carbo in borraccia 2 (g)<input id="b2" type="number" inputmode="numeric" min="0" value="0"></label>
+<label>Capacità borraccia (ml)<input id="bv" type="number" inputmode="numeric" min="250" value="750"></label>
+<label>Cosa mangi<select id="f"><option value="m" selected>Gel e barrette alternati</option><option value="g">Solo gel</option><option value="b">Solo barrette</option><option value="n">Niente, solo borracce</option></select></label>
+<label class="span2">Quanto vuoi mangiare<select id="md"><option value="g" selected>Come da linee guida</option><option value="m">Il minimo possibile (giro tranquillo)</option></select></label>
+<label>Carbo per gel (g)<input id="gs" type="number" inputmode="numeric" min="5" value="25"></label>
+<label>Carbo per barretta (g)<input id="bs" type="number" inputmode="numeric" min="5" value="30"></label>
+</div>
+</section>
+
+<section id="out" aria-live="polite"></section>
+
+<section id="sk" hidden>
+<div class="sk">Scheda</div>
+<p class="fine" style="margin:0">Una versione compatta del piano, da salvare o da mandare a te stesso.</p>
+<button class="btn pri" id="bi" type="button">Salva immagine</button><button class="btn" id="bt" type="button">Salva testo</button><button class="btn" id="bc" type="button">Copia testo</button>
+<div class="hint" id="bm"></div>
+</section>
+
+<section>
+<div class="sk">Test del sudore</div>
+<p class="fine" style="margin:0 0 12px">Per sapere quanto sudi davvero: pesati prima e dopo un’uscita di prova (senza vestiti, asciutto) e segna quanto hai bevuto.</p>
+<div class="grid">
+<label>Peso prima (kg)<input id="sp1" type="number" inputmode="decimal" step="0.1"></label>
+<label>Peso dopo (kg)<input id="sp2" type="number" inputmode="decimal" step="0.1"></label>
+<label>Hai bevuto (ml)<input id="sd" type="number" inputmode="numeric" min="0"></label>
+<label>Durata del test (min)<input id="sm" type="number" inputmode="numeric" min="20"></label>
+<label class="span2">Usa nel piano<select id="us"><option value="s">Sì, per i liquidi</option><option value="n" selected>No, usa la stima</option></select></label>
+</div>
+<div id="swo" style="margin-top:12px"></div>
+</section>
+
+<section>
+<div class="sk">Consigli</div>
+<details><summary>Salite</summary><ul>
+<li>Mangia e bevi prima di una salita impegnativa, non nel mezzo: in salita il ritmo è alto, il respiro corto e aprire un gel è scomodo. <span class="tag">(esperienza pratica)</span></li>
+<li>Salita lunga alla fine dell’uscita: arrivaci già alimentato, perché durante lo sforzo è difficile recuperare. Salita all’inizio: parti subito con la borraccia con i carboidrati. <span class="tag">(esperienza pratica)</span></li>
+<li>Dopo la cima, in discesa o in pianura, hai le mani libere: è il momento migliore per mangiare e bere con calma. <span class="tag">(esperienza pratica)</span></li>
+<li>Con un GPX o un FIT caricato, l’app sposta da sola le assunzioni che cadono dentro una salita importante, prima o dopo.</li>
+</ul></details>
+<details><summary>Caldo</summary><ul>
+<li>La sudorazione tipica degli atleti va da circa 0,5 a 2 litri all’ora ed è molto personale: il test del sudore qui sopra serve a questo. <span class="tag">(Baker, 2016)</span></li>
+<li>L’obiettivo non è reintegrare tutto quello che sudi, ma limitare la perdita di peso corporeo sotto il 2%. <span class="tag">(ACSM, 2007)</span></li>
+<li>Senza test, l’app aumenta i litri all’ora con la temperatura: è una mia stima, aggiustala sulle tue sensazioni.</li>
+<li>Bevi a piccoli sorsi regolari invece di tanto in una volta, e tieni le borracce fresche. Se vedi aloni bianchi di sale su maglia o casco, probabilmente perdi molto sodio: punta alla parte alta dell’intervallo. <span class="tag">(esperienza pratica)</span></li>
+</ul></details>
+<details><summary>Freddo</summary><ul>
+<li>Con il freddo senti meno la sete, ma sudi comunque: programma sorsi regolari invece di aspettare lo stimolo. <span class="tag">(esperienza pratica)</span></li>
+<li>I gel si addensano e le mani fredde faticano ad aprire le confezioni: tienili nelle tasche interne e scegli prodotti facili da aprire. <span class="tag">(esperienza pratica)</span></li>
+</ul></details>
+<details><summary>Uscite lunghe (oltre 2,5 ore)</summary><ul>
+<li>Fino a 90 g/h di carboidrati, ma sopra i 60 g/h serve un mix di glucosio e fruttosio (circa 2:1): un solo zucchero si ossida fino a circa 60 g/h. <span class="tag">(Burke 2011, Jeukendrup/GSSI)</span></li>
+<li>Comincia a mangiare e bere dai primi 20–30 minuti e prosegui a intervalli regolari, senza aspettare la fame: l’ossidazione dei carboidrati assunti cresce così e si stabilizza dopo 60–90 minuti. <span class="tag">(Jeukendrup/GSSI)</span></li>
+<li>Il sistema digerente si può allenare: ripeti nelle uscite di allenamento le quantità che userai in gara, aumentandole gradualmente. In alcuni studi bastano pochi giorni per vedere effetti. <span class="tag">(Jeukendrup, 2017)</span></li>
+</ul></details>
+<details><summary>Mangiare il meno possibile</summary><ul>
+<li>Le fonti danno intervalli, non minimi assoluti: per le uscite da 1 a 2,5 ore indicano 30–60 g/h. La modalità “il minimo” si ferma a 30 g/h, la parte bassa dell’intervallo. <span class="tag">(Burke 2011)</span></li>
+<li>Meglio portare i carboidrati in borraccia che in gel: bevi comunque, e così non devi mangiare nulla. L’app calcola i grammi per borraccia.</li>
+<li>Funziona per giri tranquilli. Oltre 3,5 ore o a intensità dura i valori indicati dalle fonti sono molto più alti: il rischio è arrivare scarico. <span class="tag">(Burke 2011, Jeukendrup 2014)</span></li>
+<li>Arriva alla partenza ben alimentato (colazione abbondante, pasto del giorno prima) e tieni un gel di scorta. <span class="tag">(esperienza pratica)</span></li>
+</ul></details>
+<details><summary>Uscite brevi (sotto 2 ore)</summary><ul>
+<li>Sotto l’ora basta acqua. Da 1 a 2 ore bastano circa 30 g/h, e possono stare tutti in borraccia. <span class="tag">(Burke 2011)</span></li>
+</ul></details>
+<details><summary>Intensità alta</summary><ul>
+<li>Più vai forte, meno tolleri il cibo solido: preferisci bevande e gel e lascia le barrette ai tratti facili. <span class="tag">(esperienza pratica)</span></li>
+<li>Una bevanda molto concentrata è più difficile da digerire: la fonte più datata indica al massimo l’8%. <span class="tag">(ACSM, 1996)</span></li>
+</ul></details>
+<details><summary>Prima e dopo</summary><ul>
+<li>Pesati prima e dopo l’uscita: ogni kg perso richiede circa 1,5 litri per recuperare. <span class="tag">(ACSM, 2007)</span></li>
+<li>Prima: 1–4 g/kg di carboidrati da 1 a 4 ore prima. Dopo: 1,0–1,2 g/kg all’ora e 0,25–0,3 g/kg di proteine. <span class="tag">(Thomas e coll., 2016)</span></li>
+<li>Niente di nuovo il giorno di una gara: prova prodotti e quantità in allenamento. <span class="tag">(esperienza pratica)</span></li>
+</ul></details>
+</section>
+
+<section>
+<div class="sk">Da dove vengono i numeri</div>
+<ul class="src">
+<li>Carboidrati durante l’uscita: <a href="https://pubmed.ncbi.nlm.nih.gov/21660838/" target="_blank" rel="noopener">Burke e coll., 2011</a> (30–60 g/h, fino a 90 g/h oltre 2,5 ore) e <a href="https://link.springer.com/content/pdf/10.1007/s40279-014-0148-z.pdf" target="_blank" rel="noopener">Jeukendrup, 2014</a>; mix glucosio e fruttosio: <a href="https://www.gssiweb.org/en/sports-science-exchange/Article/sse-108-multiple-transportable-carbohydrates-and-their-benefits" target="_blank" rel="noopener">Jeukendrup, GSSI</a>; stomaco allenabile: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5371619" target="_blank" rel="noopener">Jeukendrup, 2017</a>.</li>
+<li>Prima e dopo: <a href="https://www.dietitians.ca/DietitiansOfCanada/media/Documents/Resources/noap-position-paper.pdf?ext=.pdf" target="_blank" rel="noopener">Thomas e coll., 2016</a> (ACSM, Academy of Nutrition and Dietetics, Dietitians of Canada): 1–4 g/kg di carboidrati 1–4 ore prima; 1,0–1,2 g/kg/h dopo; 0,25–0,3 g/kg di proteine.</li>
+<li>Liquidi: <a href="https://journals.lww.com/acsm-msse/Fulltext/2007/02000/Exercise_and_Fluid_Replacement.22.aspx" target="_blank" rel="noopener">ACSM, 2007</a> (limitare la perdita di peso sotto il 2%, circa 500 ml due ore prima, circa 1,5 litri per ogni kg perso) e <a href="https://www.gssiweb.org/sports-science-exchange/article/normative-data-for-regional-sweat-sodium-concentration-and-whole-body-sweating-rate-in-athletes-" target="_blank" rel="noopener">Baker e coll., 2016</a> (sudorazione tipica 0,5–2 L/h).</li>
+<li>Sodio: <a href="https://pubmed.ncbi.nlm.nih.gov/9303999/" target="_blank" rel="noopener">ACSM, 1996</a> (0,5–0,7 g per litro di bevanda oltre 1 ora). È la fonte più datata e il sudore varia molto da persona a persona.</li>
+</ul>
+<p class="fine">Sono stime mie, non dalle fonti: la durata ricavata da intensità e dislivello (o, con un file senza orari, da velocità in salita e in discesa per ogni intensità), i litri all’ora in base alla temperatura (o alla tua sudorazione, tenendo il 2% di perdita come limite), le kcal, i grammi per borraccia della modalità minimo, le ore di anticipo del pasto e le indicazioni segnate come esperienza pratica. Sono linee guida per amatori sani: provale in allenamento e, se hai condizioni mediche o allergie, chiedi a un medico o a un nutrizionista.</p>
+</section>
+</main>
+<script>
+(function(){
+var $=function(id){return document.getElementById(id)};
+var ids=["km","d","i","t","w","h","tm","b","b2","bv","gs","bs","f","md","sp1","sp2","sd","sm","us"];
+var R=null,CL=[],eatKm=[],man=null,PLAN=null,DL=null;
+var r5=function(x){return Math.round(x/5)*5},r10=function(x){return Math.round(x/10)*10},r50=function(x){return Math.round(x/50)*50};
+var f1=function(x){return x.toFixed(1).replace(".",",")},strip=function(h){return h.replace(/<br>/g," ").replace(/<[^>]+>/g,"")};
+function fmtT(m){m=Math.round(m);var h=Math.floor(m/60),mm=m%60;return h?h+" h"+(mm?" "+mm+" min":""):mm+" min"}
+function load(){try{var s=JSON.parse(localStorage.getItem("cmb3")||"{}");ids.forEach(function(k){if(s[k]!==undefined&&!(k==="us"&&!s._u))$(k).value=s[k]})}catch(e){}}
+function save(){try{var s={};ids.forEach(function(k){if(R&&(k==="km"||k==="d"))return;s[k]=$(k).value});s._u=1;localStorage.setItem("cmb3",JSON.stringify(s))}catch(e){}}
+function lock(){$("km").readOnly=!!R;$("d").readOnly=!!(R&&R.hasE);["km","d"].forEach(function(k){$(k).style.opacity=$(k).readOnly?".6":"1"});$("tmw").hidden=!(R&&R.hasT)}
+function hav(a,b){var r=Math.PI/180,dl=(b.la-a.la)*r,dn=(b.lo-a.lo)*r,q=Math.sin(dl/2)*Math.sin(dl/2)+Math.cos(a.la*r)*Math.cos(b.la*r)*Math.sin(dn/2)*Math.sin(dn/2);return 12742*Math.asin(Math.sqrt(q))}
+function parseGpx(t){var x=new DOMParser().parseFromString(t,"application/xml"),ps=x.getElementsByTagName("trkpt");if(!ps.length)ps=x.getElementsByTagName("rtept");var a=[];for(var i=0;i<ps.length;i++){var p=ps[i],e=p.getElementsByTagName("ele")[0],tt=p.getElementsByTagName("time")[0];a.push({la:+p.getAttribute("lat"),lo:+p.getAttribute("lon"),e:e?+e.textContent:null,t:tt?Date.parse(tt.textContent)/1000:null})}return a}
+function parseFit(buf){
+var dv=new DataView(buf),hs=dv.getUint8(0),end=Math.min(buf.byteLength-2,hs+dv.getUint32(4,true)),p=hs,defs={},a=[];
+var rec=function(d,p){var o=p;if(d.g===20){var r={};d.f.forEach(function(f){if(f.n===0&&f.s===4)r.la=dv.getInt32(o,d.le);else if(f.n===1&&f.s===4)r.lo=dv.getInt32(o,d.le);else if(f.n===2&&f.s===2)r.a=dv.getUint16(o,d.le);else if(f.n===78&&f.s===4)r.ea=dv.getUint32(o,d.le);else if(f.n===253&&f.s===4)r.ts=dv.getUint32(o,d.le);o+=f.s});
+if(r.la!==undefined&&r.lo!==undefined&&r.la!==2147483647&&r.lo!==2147483647){var e=null;if(r.ea!==undefined&&r.ea!==4294967295)e=r.ea/5-500;else if(r.a!==undefined&&r.a!==65535)e=r.a/5-500;a.push({la:r.la*180/2147483648,lo:r.lo*180/2147483648,e:e,t:(r.ts!==undefined&&r.ts!==4294967295)?r.ts:null})}}
+return p+d.size};
+while(p<end){var h=dv.getUint8(p++),d;
+if(h&128){d=defs[(h>>5)&3];if(!d)break;p=rec(d,p)}
+else if(h&64){var lt=h&15,le=dv.getUint8(p+1)===0,gm=dv.getUint16(p+2,le),nf=dv.getUint8(p+4),f=[],q=p+5,i,tot=0;
+for(i=0;i<nf;i++){f.push({n:dv.getUint8(q),s:dv.getUint8(q+1)});tot+=dv.getUint8(q+1);q+=3}
+if(h&32){var nd=dv.getUint8(q++);for(i=0;i<nd;i++){tot+=dv.getUint8(q+1);q+=3}}
+defs[lt]={g:gm,f:f,le:le,size:tot};p=q}
+else{d=defs[h&15];if(!d)break;p=rec(d,p)}}
+return a}
+function fillE(a){var last=null,i;for(i=0;i<a.length;i++){if(a[i].e===null||isNaN(a[i].e)){if(last!==null)a[i].e=last}else last=a[i].e}
+var first=null;for(i=0;i<a.length;i++)if(a[i].e!==null&&!isNaN(a[i].e)){first=a[i].e;break}
+if(first!==null)for(i=0;i<a.length&&(a[i].e===null||isNaN(a[i].e));i++)a[i].e=first;return a}
+function avg(arr,k,w,hi){var s=0,c=0;for(var m=Math.max(0,k-w);m<=Math.min(hi,k+w);m++){s+=arr[m];c++}return s/c}
+function build(a){
+if(a.length<2)return null;var dist=[0],i,j;for(i=1;i<a.length;i++)dist.push(dist[i-1]+hav(a[i-1],a[i]));
+var tot=dist[a.length-1];if(!(tot>0.3))return null;
+var hasE=a.every(function(p){return p.e!==null&&!isNaN(p.e)});
+var hasT=a.every(function(p){return p.t!==null&&!isNaN(p.t)}),ct=[0],mov=0;
+if(hasT){for(i=1;i<a.length;i++){var dt=a[i].t-a[i-1].t,dk=dist[i]-dist[i-1];if(dt>0&&dk/(dt/3600)>=1.5)mov+=dt;ct.push(mov)}if(!(mov>60))hasT=false}
+var step=0.1,n=Math.floor(tot/step),E=[],Tm=[],q=0;
+for(i=0;i<=n;i++){var x=i*step;while(q<a.length-2&&dist[q+1]<x)q++;var f=Math.min(Math.max((x-dist[q])/((dist[q+1]-dist[q])||1),0),1);E.push(hasE?a[q].e+(a[q+1].e-a[q].e)*f:0);Tm.push(hasT?(ct[q]+(ct[q+1]-ct[q])*f)/60:0)}
+var Es=E.map(function(v,k){return avg(E,k,2,n)});
+var gain=0;if(hasE){var ref=Es[0];Es.forEach(function(e){if(e>ref+3){gain+=e-ref;ref=e}else if(e<ref-3)ref=e})}
+var g=[];for(i=0;i<n;i++)g.push((Es[i+1]-Es[i])/(step*1000));
+var g5=g.map(function(v,k){return avg(g,k,2,n-1)}),g3=g.map(function(v,k){return avg(g,k,1,n-1)});
+var cl=[];i=0;
+while(i<n){if(g5[i]>=0.03){var s0=i;while(i<n&&g5[i]>=0.015)i++;var gn=Es[i]-Es[s0],len=(i-s0)*step;
+if(hasE&&gn>=50&&len>=0.8){var mx=0;for(j=s0;j<i;j++)mx=Math.max(mx,g5[j]);cl.push({s:s0,e:i,k0:s0*step,k1:i*step,gain:gn,len:len,gr:gn/(len*1000),mx:mx})}}else i++}
+var st=Math.max(1,Math.ceil(a.length/400)),pts=[],l=a.length-1;
+for(i=0;i<a.length;i+=st)pts.push({la:a[i].la,lo:a[i].lo,d:dist[i]});
+if(l%st)pts.push({la:a[l].la,lo:a[l].lo,d:dist[l]});
+return{pts:pts,km:tot,gain:gain,hasE:hasE,hasT:hasT,Tm:Tm,movMin:mov/60,elMin:hasT?(a[l].t-a[0].t)/60:0,avg:hasT?tot/(mov/3600):0,n:n,step:step,Es:Es,g3:g3,cl:cl}}
+function times(it){
+if(R.hasT&&$("tm").value==="f")return{T:R.Tm,total:R.Tm[R.n]+(R.km-R.n*R.step)/R.avg*60,real:true};
+var vf=[24,27,31][it],vam=[500,700,900][it],T=[0];
+for(var i=0;i<R.n;i++){var g=R.g3[i],v;
+if(g>0.015)v=Math.min(vf,vam/(1000*g));else if(g<0)v=Math.min(vf*(1+8*(-g)),vf*1.6,50);else v=vf;
+T.push(T[i]+R.step/v*60)}
+return{T:T,total:T[R.n]+(R.km-R.n*R.step)/vf*60,real:false}}
+function parseDur(s){s=(s||"").trim();if(!s)return{h:0,ok:true,empty:true};var m,H,M=0,S=0;
+if(/^\d{1,2}:\d{1,2}(:\d{1,2})?$/.test(s)){var p=s.split(":").map(Number);H=p[0];M=p[1];S=p[2]||0}
+else if(m=s.match(/^(\d{1,2})\s*h\s*(?:(\d{1,2})\s*(?:min|m)?)?$/i)){H=+m[1];M=+(m[2]||0)}
+else if(/^\d+[.,]\d+$/.test(s)){var v=parseFloat(s.replace(",","."));return v>0&&v<=48?{h:v,ok:true}:{h:0,ok:false}}
+else if(/^\d{1,6}$/.test(s)){var L=s.length;if(L<=2)H=+s;else if(L<=4){H=+s.slice(0,L-2);M=+s.slice(-2)}else{H=+s.slice(0,L-4);M=+s.slice(L-4,L-2);S=+s.slice(-2)}}
+else return{h:0,ok:false};
+if(M>59||S>59)return{h:0,ok:false};var t=H+M/60+S/3600;return t<=48?{h:t,ok:true}:{h:0,ok:false}}
+function durH(){var p=parseDur($("h").value);return p.ok?p.h:0}
+function durShow(){var p=parseDur($("h").value);$("hf").textContent=p.empty?"":p.ok?(p.h>0?"Letto come "+fmtT(Math.round(p.h*60)):""):"Formato non valido: prova 2:30 oppure 2:30:00"}
+function swRate(){var a=+$("sp1").value,b=+$("sp2").value,dr=+$("sd").value||0,m=+$("sm").value;if(!(a>0&&b>0&&m>=20))return null;var loss=(a-b)*1000+dr;if(loss<=0)return null;return{rate:loss/(m/60),pct:(a-b)/a*100,loss:loss}}
+function swShow(){var s=swRate(),o=$("swo");
+if(!s){o.innerHTML="<p class='fine' style='margin:0'>Inserisci i quattro valori per calcolare la tua sudorazione.</p>";return}
+o.innerHTML="<div class='big'><div><b>"+Math.round(s.rate)+" ml/h</b><span>la tua sudorazione</span></div><div><b>"+f1(s.pct)+"%</b><span>di peso perso nel test</span></div></div><p class='n'>Hai sudato circa "+Math.round(s.loss)+" ml in totale (peso perso più quanto hai bevuto)."+(s.pct>2?" Hai superato il 2% di perdita di peso, il limite indicato dall’ACSM (2007): la prossima volta bevi di più.":"")+((s.rate<200||s.rate>2500)?" È un valore insolito: ricontrolla i pesi e la durata.":"")+" Vale per intensità e temperatura simili a quelle del test.</p>"}
+function cphFor(min,it,md){var c=0;if(min>=60){c=min<120?[30,45,60][it]:min<150?[40,50,60][it]:[60,75,90][it]}if(md==="m"&&c>0)c=30;return c}
+function setSeg(km,d,hh,md){var v=$("i").value;[].forEach.call(document.querySelectorAll("#seg button"),function(b){var it=+b.getAttribute("data-v"),mn,sub="";
+if(km>0){if(hh>0)mn=hh*60;else if(R)mn=times(it).total;else mn=km/[24,27,31][it]*60+d/100*[3.5,2.5,2][it];var c=cphFor(Math.round(mn),it,md);sub="<small>"+(c>0?c+" g/h":"solo acqua")+"</small>"}
+b.innerHTML=["Facile","Media","Dura"][it]+sub;b.classList.toggle("on",b.getAttribute("data-v")===v)});$("ih").textContent=["Parli senza fatica","Ritmo da fondo","Ritmo sostenuto"][+v]+" · i g/h dipendono dalla durata del giro"}
+function calc(){
+var out=$("out"),T=+$("t").value,w=+$("w").value,it=+$("i").value,hh=durH(),bg=+$("b").value||0,b2=+$("b2").value||0,bv=+$("bv").value||750,gs=+$("gs").value||25,bs=+$("bs").value||30,fo=$("f").value,md=$("md").value,km,d;
+swShow();
+if(R){km=R.km;d=R.hasE?R.gain:(+$("d").value||0);$("km").value=km.toFixed(1);if(R.hasE)$("d").value=Math.round(d)}else{km=+$("km").value;d=+$("d").value||0}
+setSeg(km,d,hh,md);durShow();PLAN=null;$("sk").hidden=true;
+if(!(km>0&&w>0)){out.innerHTML="<p>Inserisci distanza e peso per vedere il piano.</p>";draw();return}
+save();eatKm=[];CL=[];
+var TT=null,est;
+if(R){TT=times(it);est=Math.round(TT.total)}else est=Math.round(km/[24,27,31][it]*60+d/100*[3.5,2.5,2][it]);
+var min=hh>0?Math.round(hh*60):est,h=min/60,fac=R?min/TT.total:1;
+if(R)CL=R.cl.map(function(c){return{k0:c.k0,k1:c.k1,gain:c.gain,len:c.len,gr:c.gr,mx:c.mx,t0:TT.T[c.s]*fac,t1:TT.T[c.e]*fac,big:c.gain>=80||c.gr>=0.05}});
+var kmAt=R?function(m){var mm=m/fac,i=0;while(i<R.n&&TT.T[i+1]<mm)i++;if(i>=R.n)return R.km;return Math.min(R.km,(i+(mm-TT.T[i])/((TT.T[i+1]-TT.T[i])||1))*R.step)}:function(m){return km*m/min};
+var kcal=r10([4.5,6.5,8.5][it]*w*h+(w+9)*9.81*d/1000);
+var cph=cphFor(min,it,md);
+var fl=T<10?400:T<20?500:T<27?600:T<32?750:900;
+fl=Math.min(1000,Math.max(350,r50(fl+[-50,0,100][it])));
+var sw=swRate(),swUsed=false;
+if(sw&&$("us").value==="s"){fl=Math.min(1000,Math.max(350,r50(Math.max(sw.rate-0.02*w*1000/h,sw.rate*0.5))));swUsed=true}
+var s=[],P=[],preH,postH,durL=hh>0?"durata inserita":R?(TT.real?"durata dal file":"durata stimata dal percorso"):"durata stimata";
+s.push("<h2>Prima di partire</h2>");
+if(min<60){preH="Colazione leggera 1–2 ore prima, per esempio pane o fette biscottate con marmellata. Per un’uscita sotto l’ora non servono quantità particolari."}
+else{var g=min<120?[1,2]:min<240?[2,3]:[3,4];var tm=min<120?"1–3":"2–4";
+preH=(md==="m"?"Circa <b>"+r5(g[1]*w)+" g di carboidrati</b>, da "+tm+" ore prima del via: la parte alta dell’intervallo, perché poi mangi meno. Per esempio":"Da <b>"+r5(g[0]*w)+" a "+r5(g[1]*w)+" g di carboidrati</b>, da "+tm+" ore prima del via (quantità più alte, più in anticipo). Per esempio")+" pasta, riso o pane, con pochi grassi e poche fibre. Circa 500 ml di acqua due ore prima."}
+s.push("<p class='n'>"+preH+"</p>");
+s.push("<h2 style='margin-top:20px'>Durante l’uscita</h2>");
+s.push("<div class='big'><div><b>"+fmtT(min)+"</b><span>"+durL+"</span></div><div><b>~"+kcal+"</b><span>kcal consumate (stima)</span></div></div>");
+var tiles="",bot="",eatT="",L="",rowsT=[];
+if(cph>0){
+var na0=r10(fl*0.5),na1=r10(fl*0.7);
+var cc=[bg/bv,b2/bv],nb=Math.ceil(fl*h/bv);
+var dcum=function(x){var v=fl*x/60,t=0;for(var q=0;q<2;q++)t+=Math.min(Math.max(v-q*bv,0),bv)*cc[q];return t};
+var fs=r10(fl/3),ng=0,nbar=0,eat=0,n=0,mv=0,rows=[];
+for(var m=20;m<=min-10;m+=20){
+var gelNext=fo==="g"||(fo==="m"&&n%2===0),sz=gelNext?gs:bs;
+var dm=dcum(m)-dcum(m-20),def=cph*m/60-(dcum(m)+eat),k=Math.floor(fl*(m-20)/60/bv);
+var row={t:m,ml:fs,src:"borraccia "+(k+1)+(dm>=0.5?", "+Math.round(dm)+" g di carbo":", acqua"),food:"",note:""};
+if(fo!=="n"&&def>=sz/2){eat+=sz;n++;var item;if(gelNext){ng++;item="1 gel ("+gs+" g)"}else{nbar++;item="1 barretta ("+bs+" g)"}
+var tf=m,note="";
+CL.forEach(function(c){if(c.big&&m>c.t0&&m<c.t1){var bef=c.t0-4,aft=c.t1+2;if(m-c.t0<=15||aft>min-5){tf=Math.max(bef,5);note="prima della salita"}else{tf=aft;note="dopo la salita"}}});
+if(tf===m){row.food=item}else{mv++;rows.push({t:tf,ml:0,src:"",food:item,note:note})}
+eatKm.push(kmAt(tf))}
+rows.push(row)}
+rows.sort(function(a,b){return a.t-b.t});
+L=rows.map(function(r){var kv=Math.round(kmAt(r.t));
+rowsT.push("km "+kv+" · dopo "+fmtT(r.t)+": "+(r.ml?"bevi "+r.ml+" ml ("+r.src+")":"")+(r.food?(r.ml?". Mangia ":"mangia ")+r.food+(r.note?", "+r.note:""):""));
+return"<li"+(r.food?" class='f'":"")+"><div class='km'>km "+kv+"<small>dopo "+fmtT(r.t)+"</small></div><div class='what'>"+(r.ml?"<span class='chip d'>💧 "+r.ml+" ml · "+r.src+"</span>":"")+(r.food?"<span class='chip f'>⚡ "+r.food+"</span>":"")+(r.note?"<div class='nt'>"+r.note+"</div>":"")+"</div></li>"}).join("");
+var got=Math.round((dcum(min)+eat)/h),pc=function(x){return f1(x*100)+"%"};
+tiles="<div class='big'><div><b>"+cph+" g/h</b><span>carboidrati obiettivo</span></div><div><b>"+fl+" ml/h</b><span>liquidi</span></div><div><b>"+na0+"–"+na1+" mg/h</b><span>sodio</span></div></div>";
+s.push(tiles);
+if(swUsed)s.push("<p class='n'>I liquidi vengono dalla tua sudorazione ("+Math.round(sw.rate)+" ml/h): bevi la differenza tra quanto sudi e il 2% di peso che puoi permetterti di perdere (ACSM, 2007).</p>");
+bot="Borraccia 1: <b>"+bg+" g</b> ("+pc(cc[0])+"), borraccia 2: <b>"+b2+" g</b> ("+pc(cc[1])+"). Ti servono "+nb+" borracce da "+bv+" ml in tutto"+(nb>2?"; dalla terza in poi il piano conta solo acqua (se ricarichi con carboidrati, mangi di meno)":"")+". La 1 dura circa "+fmtT(bv/fl*60)+" e la 2 fino a circa "+fmtT(2*bv/fl*60)+".";
+s.push("<p class='n'>"+bot+"</p>");
+var gb=r5(bv*cph/fl);
+if(md==="m")s.push("<p class='n'><b>Modalità minimo.</b> Per non mangiare nulla, metti circa <b>"+gb+" g di carboidrati in ogni borraccia</b> da "+bv+" ml ("+pc(gb/bv)+"). Porta comunque un gel di scorta, nel caso ti venga fame o cali (esperienza pratica)."+((min>210||it===2)?" Attenzione: il minimo è pensato per uscite tranquille. Sopra le 3,5 ore o a intensità dura le fonti indicano molto di più, fino a 60–90 g/h, e così rischi di arrivare scarico.":"")+"</p>");
+eatT=(eat>0?"Da mangiare, sempre interi: <b>"+ng+" gel</b> e <b>"+nbar+(nbar===1?" barretta":" barrette")+"</b> ("+eat+" g). ":fo==="n"?"Non mangi nulla, come hai scelto. ":"Non serve mangiare: le borracce coprono l’obiettivo. ")+"In totale arrivi a circa <b>"+got+" g/h</b>, contro i "+cph+" g/h dell’obiettivo."+(got<30?" Sotto i 30 g/h è poco per un’uscita oltre l’ora, secondo le fonti qui sotto.":"");
+s.push("<p class='n'>"+eatT+"</p>");
+if(mv)s.push("<p class='n'>"+mv+(mv===1?" assunzione cadeva":" assunzioni cadevano")+" dentro una salita importante: l’ho spostata prima o dopo.</p>");
+s.push("<p class='n'>Il sodio mettilo nelle borracce (bevanda con sali o compressa di elettroliti), circa 0,5–0,7 g per litro. "+(cph>60?"Oltre 60 g/h usa prodotti con un mix di glucosio e fruttosio (circa 2:1) e allena lo stomaco con queste quantità prima di una gara. ":"")+(Math.max(cc[0],cc[1])>0.08?"Una borraccia supera l’8% indicato dall’ACSM (1996) per le bevande: provala in allenamento. ":"")+"</p>");
+if(L)s.push("<h2 style='margin-top:20px'>Tabella di marcia</h2><p class='fine' style='margin:0 0 6px'>Un’assunzione ogni 20 minuti"+(R?"":" (km stimati a ritmo costante)")+".</p><ol>"+L+"</ol>");
+}else{
+s.push("<p class='n'>Sotto l’ora basta bere acqua, circa "+r50(fl*h)+" ml in tutto. I carboidrati durante l’uscita non sono necessari: porta qualcosa da mangiare solo per sicurezza.</p>")}
+s.push("<h2 style='margin-top:20px'>Dopo l’uscita</h2>");
+if(min>=90||it===2){postH="Se hai poco tempo per recuperare prima del prossimo allenamento: <b>"+r5(w*1.0)+"–"+r5(w*1.2)+" g di carboidrati all’ora</b> nelle prime ore, e <b>"+Math.round(w*0.25)+"–"+Math.round(w*0.3)+" g di proteine</b> subito dopo l’uscita (per esempio riso o pasta con pollo, uova o tonno). Se ti sei pesato, bevi circa 1,5 litri per ogni kg perso. Altrimenti basta un pasto completo nelle ore seguenti."}
+else{postH="Un pasto normale entro un paio d’ore va bene. Bevi con regolarità."}
+s.push("<p class='n'>"+postH+"</p>");
+out.innerHTML=s.join("");
+var lines=[{k:"t",x:"Alimentarsi bene 🔥"},{k:"s",x:f1(km)+" km · +"+Math.round(d)+" m · "+fmtT(min)+" · intensità "+["facile","media","dura"][it]+" · "+T+" °C · "+w+" kg"},{k:"h",x:"Prima di partire"},{k:"p",x:strip(preH)},{k:"h",x:"Durante l’uscita"}];
+if(cph>0){lines.push({k:"p",x:"Obiettivo: "+cph+" g/h di carboidrati · "+fl+" ml/h di liquidi · sodio "+na0+"–"+na1+" mg/h"+(md==="m"?" · modalità minimo":"")},{k:"p",x:strip(bot)},{k:"p",x:strip(eatT)});if(md==="m")lines.push({k:"p",x:"Per non mangiare: circa "+gb+" g di carboidrati in ogni borraccia."});if(rowsT.length)lines.push({k:"h",x:"Tabella di marcia"});rowsT.forEach(function(x){lines.push({k:"r",x:x})})}
+else lines.push({k:"p",x:"Sotto l’ora basta acqua, circa "+r50(fl*h)+" ml in tutto."});
+lines.push({k:"h",x:"Dopo l’uscita"},{k:"p",x:strip(postH)});
+PLAN={lines:lines};$("sk").hidden=false;
+draw();
+}
+function planText(){return PLAN.lines.map(function(l){return l.k==="t"?l.x.toUpperCase():l.k==="h"?"\n"+l.x.toUpperCase():l.x}).join("\n")}
+function planImage(){
+var W=1080,pad=64,cv=document.createElement("canvas");cv.width=W;cv.height=7000;var c=cv.getContext("2d");
+c.fillStyle="#fff";c.fillRect(0,0,W,7000);
+var y=pad,fam="'Barlow','Helvetica Neue',Arial,sans-serif",fc="'Barlow Condensed','Arial Narrow',Arial,sans-serif";
+var wrap=function(t,fs,font,col,lh,x0){c.font=font;c.fillStyle=col;var ws=t.split(" "),ln="";for(var i=0;i<ws.length;i++){var tt=ln?ln+" "+ws[i]:ws[i];if(c.measureText(tt).width>W-pad-x0&&ln){c.fillText(ln,x0,y);y+=lh;ln=ws[i]}else ln=tt}c.fillText(ln,x0,y);y+=lh};
+c.fillStyle="#e0356f";c.fillRect(0,0,W,12);
+PLAN.lines.forEach(function(l){
+if(l.k==="t"){y+=56;wrap(l.x,64,"700 76px "+fc,"#1c2430",84,pad);}
+else if(l.k==="s"){y+=2;wrap(l.x,30,"500 30px "+fam,"#6a7681",42,pad);y+=14}
+else if(l.k==="h"){y+=34;wrap(l.x.toUpperCase(),30,"600 28px "+fam,"#e0356f",40,pad);y+=2}
+else if(l.k==="r"){wrap(l.x,30,"500 30px "+fam,"#1c2430",42,pad+22);y+=8}
+else{wrap(l.x,30,"400 30px "+fam,"#1c2430",44,pad);y+=4}});
+y+=pad-10;
+var fin=document.createElement("canvas");fin.width=W;fin.height=y;fin.getContext("2d").drawImage(cv,0,0);return fin}
+function flash(m){$("bm").textContent=m;setTimeout(function(){$("bm").textContent=""},3500)}
+function dl(blob,name){var u=URL.createObjectURL(blob),a=document.createElement("a");a.href=u;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(u)},4000);flash("Salvato nei download.")}
+function saveFile(name,blob){var f=null;try{f=new File([blob],name,{type:blob.type})}catch(e){}
+if(f&&navigator.canShare&&navigator.share&&navigator.canShare({files:[f]})){navigator.share({files:[f],title:"Alimentarsi bene"}).then(function(){flash("Condiviso.")}).catch(function(e){if(!e||e.name!=="AbortError")dl(blob,name)});return}
+dl(blob,name)}
+function withFonts(fn){try{if(document.fonts&&document.fonts.load){Promise.all([document.fonts.load("700 76px 'Barlow Condensed'"),document.fonts.load("500 30px Barlow"),document.fonts.load("600 28px Barlow"),document.fonts.load("400 30px Barlow")]).then(fn,fn);return}}catch(e){}fn()}
+$("bi").addEventListener("click",function(){if(!PLAN)return;withFonts(function(){try{planImage().toBlob(function(b){if(b)saveFile("scheda-alimentazione.png",b);else flash("Non riesco a creare l’immagine.")},"image/png")}catch(e){flash("Non riesco a creare l’immagine.")}})});
+$("bt").addEventListener("click",function(){if(PLAN)saveFile("scheda-alimentazione.txt",new Blob([planText()],{type:"text/plain"}))});
+$("bc").addEventListener("click",function(){if(!PLAN)return;try{navigator.clipboard.writeText(planText()).then(function(){flash("Testo copiato.")},function(){flash("Copia non riuscita.")})}catch(e){flash("Copia non riuscita.")}});
+
+function at(k){var p=R.pts,i=0;while(i<p.length-1&&p[i].d<k)i++;return p[i]}
+function draw(){var box=$("rt");
+if(!R){box.innerHTML="<p class='fine' style='margin:0'>Nessun percorso caricato: l’app usa solo i dati che inserisci. Se carichi un GPX o un FIT, distanza, dislivello, durata e salite vengono dal tracciato. Il file viene letto sul tuo dispositivo e non viene inviato a nessuno.</p>";return}
+var p=R.pts,cs=Math.cos(p[0].la*Math.PI/180);
+var xs=p.map(function(q){return q.lo*cs}),ys=p.map(function(q){return -q.la});
+var x0=Math.min.apply(0,xs),x1=Math.max.apply(0,xs),y0=Math.min.apply(0,ys),y1=Math.max.apply(0,ys);
+var sc=Math.min(296/((x1-x0)||1e-9),196/((y1-y0)||1e-9)),ox=12+(296-(x1-x0)*sc)/2,oy=12+(196-(y1-y0)*sc)/2;
+var X=function(q){return(ox+(q.lo*cs-x0)*sc).toFixed(1)},Y=function(q){return(oy+(-q.la-y0)*sc).toFixed(1)};
+var pt=function(q){return X(q)+","+Y(q)};
+var hl="";CL.forEach(function(c){var seg=p.filter(function(q){return q.d>=c.k0&&q.d<=c.k1});if(seg.length>1)hl+="<polyline points='"+seg.map(pt).join(" ")+"' fill='none' stroke='var(--ink)' stroke-width='4' stroke-linejoin='round' stroke-linecap='round'/>"});
+var mk="";eatKm.forEach(function(k){var q=at(k);mk+="<circle cx='"+X(q)+"' cy='"+Y(q)+"' r='4' fill='var(--teal)' stroke='var(--card)' stroke-width='1.5'/>"});
+var map="<svg viewBox='0 0 320 220' width='100%' role='img' aria-label='Tracciato del percorso'><polyline points='"+p.map(pt).join(" ")+"' fill='none' stroke='var(--pink)' stroke-width='2.5' stroke-linejoin='round' stroke-linecap='round'/>"+hl+mk+"<circle cx='"+X(p[0])+"' cy='"+Y(p[0])+"' r='5.5' fill='var(--ink)' stroke='var(--card)' stroke-width='2'/></svg>";
+var prof="";
+if(R.hasE){var st=Math.max(1,Math.ceil(R.n/400)),ix=[],i;for(i=0;i<=R.n;i+=st)ix.push(i);
+var e0=Math.min.apply(0,R.Es),e1=Math.max.apply(0,R.Es),er=(e1-e0)||1;
+var PX=function(i){return(10+i*R.step/R.km*300).toFixed(1)},PY=function(i){return(95-(R.Es[i]-e0)/er*75).toFixed(1)};
+var pp=function(i){return PX(i)+","+PY(i)};
+var pl=ix.map(pp).join(" "),ph="";
+CL.forEach(function(c){var a=[];for(i=Math.round(c.k0/R.step);i<=Math.round(c.k1/R.step);i++)a.push(pp(i));if(a.length>1)ph+="<polyline points='"+a.join(" ")+"' fill='none' stroke='var(--ink)' stroke-width='3.5' stroke-linecap='round'/>"});
+var pm="";eatKm.forEach(function(k){var i=Math.min(R.n,Math.round(k/R.step));pm+="<circle cx='"+PX(i)+"' cy='"+PY(i)+"' r='4' fill='var(--teal)' stroke='var(--card)' stroke-width='1.5'/>"});
+prof="<svg viewBox='0 0 320 110' width='100%' role='img' aria-label='Profilo altimetrico'><polygon points='10,95 "+pl+" 310,95' fill='var(--pinkbg)'/><polyline points='"+pl+"' fill='none' stroke='var(--pink)' stroke-width='2'/>"+ph+pm+"<text x='10' y='108' font-size='9' fill='var(--mute)'>"+Math.round(e0)+" m</text><text x='310' y='108' font-size='9' text-anchor='end' fill='var(--mute)'>"+Math.round(e1)+" m</text></svg>"}
+var cl="";
+if(R.hasE){cl=CL.length?"<p class='n'><b>Salite principali</b> ("+CL.length+")"+(R.hasT&&$("tm").value==="f"?", ai tuoi tempi":", a ritmo "+["facile","medio","duro"][+$("i").value])+":</p><ul class='src'>"+CL.map(function(c){return"<li><b>km "+f1(c.k0)+"–"+f1(c.k1)+"</b>: "+f1(c.len)+" km, +"+Math.round(c.gain)+" m, pendenza media "+f1(c.gr*100)+"%, circa "+fmtT(c.t1-c.t0)+(c.big?" (importante)":"")+"</li>"}).join("")+"</ul>":"<p class='n'>Nessuna salita importante su questo percorso.</p>"}
+var tl=R.hasT?"<p class='n'>Tempo del file: <b>"+fmtT(R.movMin)+"</b> in movimento"+(R.elMin-R.movMin>3?" ("+fmtT(R.elMin)+" con le soste)":"")+", media <b>"+f1(R.avg)+" km/h</b>.</p>":"<p class='n'>Il file non ha gli orari: i tempi sono stimati dall’intensità.</p>";
+box.innerHTML="<div class='big'><div><b>"+f1(R.km)+" km</b><span>distanza</span></div><div><b>"+(R.hasE?Math.round(R.gain)+" m":"n.d.")+"</b><span>dislivello in salita</span></div></div>"+map+prof+tl+cl+"<p class='fine'>Il punto grande è la partenza, i tratti più spessi sono le salite, i punti colorati sono dove mangi. È il solo tracciato, senza mappa stradale di sfondo: da questa pagina non si possono caricare mappe online. Distanza e dislivello sono bloccati sui valori del file.</p><button class='btn' id='rm' type='button'>Rimuovi percorso</button>"}
+$("gpx").addEventListener("change",function(e){var f=e.target.files[0];if(!f)return;var fit=/\.fit$/i.test(f.name),r=new FileReader();r.onload=function(){try{if(!R)man={km:$("km").value,d:$("d").value};R=build(fillE(fit?parseFit(r.result):parseGpx(r.result)));if(!R)throw 0;lock();calc()}catch(x){R=null;lock();$("rt").innerHTML="<p class='n'>Non riesco a leggere questo file: serve un GPX o un FIT con almeno due punti GPS.</p>"}};if(fit)r.readAsArrayBuffer(f);else r.readAsText(f)});
+$("rt").addEventListener("click",function(e){if(e.target.id==="rm"){R=null;CL=[];eatKm=[];$("gpx").value="";if(man){$("km").value=man.km;$("d").value=man.d}lock();calc()}});
+$("seg").addEventListener("click",function(e){var v=e.target.getAttribute&&e.target.getAttribute("data-v");if(v===null||v===undefined)return;$("i").value=v;calc()});
+ids.forEach(function(k){$(k).addEventListener("input",calc);$(k).addEventListener("change",calc)});
+load();lock();calc();
+if("serviceWorker" in navigator&&/^https?:/.test(location.protocol)){window.addEventListener("load",function(){navigator.serviceWorker.register("sw.js").catch(function(){})})}
+})();
+</script>
+</body>
+</html>
